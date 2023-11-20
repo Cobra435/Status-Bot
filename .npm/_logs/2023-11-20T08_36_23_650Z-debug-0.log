@@ -1,0 +1,225 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.2.4
+2 info using node@v20.9.0
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 0ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:project Completed in 0ms
+10 timing config:load:file:/home/container/.npmrc Completed in 0ms
+11 timing config:load:user Completed in 0ms
+12 timing config:load:file:/usr/local/etc/npmrc Completed in 0ms
+13 timing config:load:global Completed in 1ms
+14 timing config:load:setEnvs Completed in 0ms
+15 timing config:load Completed in 4ms
+16 timing npm:load:configload Completed in 4ms
+17 timing config:load:flatten Completed in 1ms
+18 timing npm:load:mkdirpcache Completed in 0ms
+19 timing npm:load:mkdirplogs Completed in 0ms
+20 verbose title npm install
+21 verbose argv "install"
+22 timing npm:load:setTitle Completed in 0ms
+23 timing npm:load:display Completed in 0ms
+24 verbose logfile logs-max:10 dir:/home/container/.npm/_logs/2023-11-20T08_36_23_650Z-
+25 verbose logfile /home/container/.npm/_logs/2023-11-20T08_36_23_650Z-debug-0.log
+26 timing npm:load:logFile Completed in 5ms
+27 timing npm:load:timers Completed in 0ms
+28 timing npm:load:configScope Completed in 0ms
+29 timing npm:load Completed in 20ms
+30 timing arborist:ctor Completed in 0ms
+31 silly logfile start cleaning logs, removing 1 files
+32 silly logfile done cleaning log files
+33 timing idealTree:init Completed in 30ms
+34 timing idealTree:userRequests Completed in 0ms
+35 silly idealTree buildDeps
+36 timing idealTree:#root Completed in 0ms
+37 timing idealTree:buildDeps Completed in 1ms
+38 timing idealTree:fixDepFlags Completed in 0ms
+39 timing idealTree Completed in 32ms
+40 timing arborist:ctor Completed in 0ms
+41 timing reify:loadTrees Completed in 50ms
+42 timing reify:diffTrees Completed in 3ms
+43 silly reify moves {}
+44 timing reify:retireShallow Completed in 1ms
+45 timing reify:createSparse Completed in 0ms
+46 timing reify:loadBundles Completed in 0ms
+47 silly audit bulk request {
+47 silly audit   '@discordjs/builders': [ '1.6.5' ],
+47 silly audit   '@discordjs/collection': [ '1.5.3' ],
+47 silly audit   '@discordjs/formatters': [ '0.3.2' ],
+47 silly audit   '@discordjs/rest': [ '2.0.1' ],
+47 silly audit   '@discordjs/util': [ '1.0.1' ],
+47 silly audit   '@discordjs/ws': [ '1.0.1' ],
+47 silly audit   '@sapphire/async-queue': [ '1.5.0' ],
+47 silly audit   '@sapphire/shapeshift': [ '3.9.2' ],
+47 silly audit   '@sapphire/snowflake': [ '3.5.1' ],
+47 silly audit   '@types/node': [ '20.5.6' ],
+47 silly audit   '@types/ws': [ '8.5.5' ],
+47 silly audit   '@vladfrangu/async_event_emitter': [ '2.2.2' ],
+47 silly audit   ajv: [ '6.12.6' ],
+47 silly audit   asn1: [ '0.2.6' ],
+47 silly audit   'assert-plus': [ '1.0.0' ],
+47 silly audit   asynckit: [ '0.4.0' ],
+47 silly audit   'aws-sign2': [ '0.7.0' ],
+47 silly audit   aws4: [ '1.12.0' ],
+47 silly audit   axios: [ '0.24.0' ],
+47 silly audit   'bcrypt-pbkdf': [ '1.0.2' ],
+47 silly audit   busboy: [ '1.6.0' ],
+47 silly audit   caseless: [ '0.12.0' ],
+47 silly audit   'combined-stream': [ '1.0.8' ],
+47 silly audit   'core-util-is': [ '1.0.2' ],
+47 silly audit   dashdash: [ '1.14.1' ],
+47 silly audit   'delayed-stream': [ '1.0.0' ],
+47 silly audit   'discord-api-types': [ '0.37.50' ],
+47 silly audit   'discord.js': [ '14.13.0' ],
+47 silly audit   'ecc-jsbn': [ '0.1.2' ],
+47 silly audit   extend: [ '3.0.2' ],
+47 silly audit   extsprintf: [ '1.3.0' ],
+47 silly audit   'fast-deep-equal': [ '3.1.3' ],
+47 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+47 silly audit   'follow-redirects': [ '1.15.3' ],
+47 silly audit   'forever-agent': [ '0.6.1' ],
+47 silly audit   'form-data': [ '2.3.3' ],
+47 silly audit   getpass: [ '0.1.7' ],
+47 silly audit   'har-schema': [ '2.0.0' ],
+47 silly audit   'har-validator': [ '5.1.5' ],
+47 silly audit   'http-signature': [ '1.2.0' ],
+47 silly audit   'is-typedarray': [ '1.0.0' ],
+47 silly audit   isstream: [ '0.1.2' ],
+47 silly audit   jsbn: [ '0.1.1' ],
+47 silly audit   'json-schema': [ '0.4.0' ],
+47 silly audit   'json-schema-traverse': [ '0.4.1' ],
+47 silly audit   'json-stringify-safe': [ '5.0.1' ],
+47 silly audit   jsprim: [ '1.4.2' ],
+47 silly audit   lodash: [ '4.17.21' ],
+47 silly audit   'lodash.snakecase': [ '4.1.1' ],
+47 silly audit   'magic-bytes.js': [ '1.0.15' ],
+47 silly audit   'mime-db': [ '1.52.0' ],
+47 silly audit   'mime-types': [ '2.1.35' ],
+47 silly audit   'oauth-sign': [ '0.9.0' ],
+47 silly audit   'performance-now': [ '2.1.0' ],
+47 silly audit   psl: [ '1.9.0' ],
+47 silly audit   punycode: [ '2.3.1' ],
+47 silly audit   qs: [ '6.5.3' ],
+47 silly audit   request: [ '2.88.2' ],
+47 silly audit   'safe-buffer': [ '5.2.1' ],
+47 silly audit   'safer-buffer': [ '2.1.2' ],
+47 silly audit   sshpk: [ '1.18.0' ],
+47 silly audit   streamsearch: [ '1.1.0' ],
+47 silly audit   'tough-cookie': [ '2.5.0' ],
+47 silly audit   'ts-mixer': [ '6.0.3' ],
+47 silly audit   tslib: [ '2.6.2' ],
+47 silly audit   'tunnel-agent': [ '0.6.0' ],
+47 silly audit   tweetnacl: [ '0.14.5' ],
+47 silly audit   undici: [ '5.22.1' ],
+47 silly audit   'uri-js': [ '4.4.1' ],
+47 silly audit   uuid: [ '3.4.0' ],
+47 silly audit   verror: [ '1.10.0' ],
+47 silly audit   ws: [ '8.13.0' ]
+47 silly audit }
+48 timing reify:unpack Completed in 2ms
+49 timing reify:unretire Completed in 19ms
+50 timing build:queue Completed in 0ms
+51 timing build:deps Completed in 0ms
+52 timing build Completed in 0ms
+53 timing reify:build Completed in 0ms
+54 timing reify:trash Completed in 0ms
+55 timing reify:save Completed in 18ms
+56 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 245ms
+57 timing auditReport:getReport Completed in 247ms
+58 silly audit report {
+58 silly audit report   axios: [
+58 silly audit report     {
+58 silly audit report       id: 1094889,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-wf5p-g6vw-rhxx',
+58 silly audit report       title: 'Axios Cross-Site Request Forgery Vulnerability',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '>=0.8.1 <1.6.0',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   request: [
+58 silly audit report     {
+58 silly audit report       id: 1092972,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-p8p7-x288-28g6',
+58 silly audit report       title: 'Server-Side Request Forgery in Request',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '<=2.88.2',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   'tough-cookie': [
+58 silly audit report     {
+58 silly audit report       id: 1094596,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-72xf-g2v4-qvf3',
+58 silly audit report       title: 'tough-cookie Prototype Pollution vulnerability',
+58 silly audit report       severity: 'moderate',
+58 silly audit report       vulnerable_versions: '<4.1.3',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ],
+58 silly audit report   undici: [
+58 silly audit report     {
+58 silly audit report       id: 1094515,
+58 silly audit report       url: 'https://github.com/advisories/GHSA-wqq4-5wpv-mx2g',
+58 silly audit report       title: "Undici's cookie header not cleared on cross-origin redirect in fetch",
+58 silly audit report       severity: 'low',
+58 silly audit report       vulnerable_versions: '<5.26.2',
+58 silly audit report       cwe: [Array],
+58 silly audit report       cvss: [Object]
+58 silly audit report     }
+58 silly audit report   ]
+58 silly audit report }
+59 timing metavuln:cache:get:security-advisory:axios:Jphyrph0xSBoV7rAKQ5sxe+Zizq65vm72MJltviDtKidjsZwX/gC36j+hz03tZ86vHMEkACxqA4FcmoDJt5vmg== Completed in 7ms
+60 timing metavuln:cache:get:security-advisory:tough-cookie:AouusGQYUHqHdOByuOzGsskEf3Xh5WfAZZLgc9g2bBDheCEDPyVW35Hnwb7mWvfWc0BH6dbGEAdAvODxcChyCg== Completed in 5ms
+61 timing metavuln:cache:get:security-advisory:request:koWeGxnAvq4FABswDKpuz/5A9Fh4CEpyLScKR4Vcx8PqZAOQWapHQFcG4Z93jnNvMUUR00ZbC/YEgKSGkn+lcw== Completed in 6ms
+62 timing metavuln:cache:get:security-advisory:undici:LVA0PUXDNBReLTPS+TI9Iu88e+KDflnyDmYT5ai963hfhyA/0DSzDjvIOEG4SWPsxW9YWYBdJdqNBVOnk7adeA== Completed in 5ms
+63 http fetch GET 200 https://registry.npmjs.org/tough-cookie 13ms (cache hit)
+64 timing metavuln:packument:tough-cookie Completed in 13ms
+65 timing metavuln:load:security-advisory:tough-cookie:1094596 Completed in 1ms
+66 timing metavuln:calculate:security-advisory:tough-cookie:1094596 Completed in 14ms
+67 http fetch GET 200 https://registry.npmjs.org/axios 15ms (cache hit)
+68 timing metavuln:packument:axios Completed in 18ms
+69 timing metavuln:load:security-advisory:axios:1094889 Completed in 0ms
+70 timing metavuln:calculate:security-advisory:axios:1094889 Completed in 18ms
+71 http fetch GET 200 https://registry.npmjs.org/request 18ms (cache hit)
+72 timing metavuln:packument:request Completed in 19ms
+73 timing metavuln:load:security-advisory:request:1092972 Completed in 1ms
+74 timing metavuln:calculate:security-advisory:request:1092972 Completed in 20ms
+75 http fetch GET 200 https://registry.npmjs.org/undici 18ms (cache hit)
+76 timing metavuln:packument:undici Completed in 21ms
+77 timing metavuln:load:security-advisory:undici:1094515 Completed in 5ms
+78 timing metavuln:calculate:security-advisory:undici:1094515 Completed in 26ms
+79 timing metavuln:cache:get:security-advisory:request:4g7q3WMkqpeZ9P/EYt7eBtiNseKQIrAb2VrXwjIttU60mqEF3ohaWAHg7wzR7Y1k+eWflAz/6U6fbHtf5MNWOw== Completed in 0ms
+80 timing metavuln:load:security-advisory:request:AouusGQYUHqHdOByuOzGsskEf3Xh5WfAZZLgc9g2bBDheCEDPyVW35Hnwb7mWvfWc0BH6dbGEAdAvODxcChyCg== Completed in 1ms
+81 timing metavuln:calculate:security-advisory:request:AouusGQYUHqHdOByuOzGsskEf3Xh5WfAZZLgc9g2bBDheCEDPyVW35Hnwb7mWvfWc0BH6dbGEAdAvODxcChyCg== Completed in 1ms
+82 timing metavuln:cache:get:security-advisory:@discordjs/rest:nTbAso0h2wSeYTBYupB0K+vc5TWeneF8gvjQxyUOfJnMv9zRWfuBYh+72sxQH3iJnB8thnUG2rvwpneUegvCrg== Completed in 2ms
+83 timing metavuln:cache:get:security-advisory:discord.js:35+Fog3shpS45AdC9bHlQQ0Q2cszKszFxgVxSzXOjPgoKgodYqPWFwxAAtPxz//2Q4hux8likNPgvMtmlszAJw== Completed in 2ms
+84 http fetch GET 200 https://registry.npmjs.org/@discordjs%2frest 10ms (cache hit)
+85 timing metavuln:packument:@discordjs/rest Completed in 19ms
+86 timing metavuln:load:security-advisory:@discordjs/rest:LVA0PUXDNBReLTPS+TI9Iu88e+KDflnyDmYT5ai963hfhyA/0DSzDjvIOEG4SWPsxW9YWYBdJdqNBVOnk7adeA== Completed in 12ms
+87 timing metavuln:calculate:security-advisory:@discordjs/rest:LVA0PUXDNBReLTPS+TI9Iu88e+KDflnyDmYT5ai963hfhyA/0DSzDjvIOEG4SWPsxW9YWYBdJdqNBVOnk7adeA== Completed in 31ms
+88 http fetch GET 200 https://registry.npmjs.org/discord.js 36ms (cache hit)
+89 timing metavuln:packument:discord.js Completed in 49ms
+90 timing metavuln:load:security-advisory:discord.js:LVA0PUXDNBReLTPS+TI9Iu88e+KDflnyDmYT5ai963hfhyA/0DSzDjvIOEG4SWPsxW9YWYBdJdqNBVOnk7adeA== Completed in 17ms
+91 timing metavuln:calculate:security-advisory:discord.js:LVA0PUXDNBReLTPS+TI9Iu88e+KDflnyDmYT5ai963hfhyA/0DSzDjvIOEG4SWPsxW9YWYBdJdqNBVOnk7adeA== Completed in 66ms
+92 timing metavuln:cache:get:security-advisory:@discordjs/ws:+mHKy+ULb5O8bpaLVgOY2Yg6G3AifFXHYj7eJYJwqveYNV7dMI5izxWcwc1tPKfTahRq5mxP53r3gDP9Sgh2rQ== Completed in 6ms
+93 timing metavuln:cache:get:security-advisory:discord.js:MYNh95YeDJpTLiCTjYqhNIgyZjoA5CWozXUwHNd5xsx6on+2nmNOuiVk8yOZ1cb/X7FKWkv4m/xk7fCACYQyRw== Completed in 6ms
+94 timing metavuln:load:security-advisory:discord.js:nTbAso0h2wSeYTBYupB0K+vc5TWeneF8gvjQxyUOfJnMv9zRWfuBYh+72sxQH3iJnB8thnUG2rvwpneUegvCrg== Completed in 13ms
+95 timing metavuln:calculate:security-advisory:discord.js:nTbAso0h2wSeYTBYupB0K+vc5TWeneF8gvjQxyUOfJnMv9zRWfuBYh+72sxQH3iJnB8thnUG2rvwpneUegvCrg== Completed in 19ms
+96 http fetch GET 200 https://registry.npmjs.org/@discordjs%2fws 44ms (cache hit)
+97 timing metavuln:packument:@discordjs/ws Completed in 53ms
+98 timing metavuln:load:security-advisory:@discordjs/ws:nTbAso0h2wSeYTBYupB0K+vc5TWeneF8gvjQxyUOfJnMv9zRWfuBYh+72sxQH3iJnB8thnUG2rvwpneUegvCrg== Completed in 6ms
+99 timing metavuln:calculate:security-advisory:@discordjs/ws:nTbAso0h2wSeYTBYupB0K+vc5TWeneF8gvjQxyUOfJnMv9zRWfuBYh+72sxQH3iJnB8thnUG2rvwpneUegvCrg== Completed in 60ms
+100 timing auditReport:init Completed in 179ms
+101 timing reify:audit Completed in 426ms
+102 timing reify Completed in 489ms
+103 timing command:install Completed in 545ms
+104 verbose exit 0
+105 timing npm Completed in 675ms
+106 info ok
