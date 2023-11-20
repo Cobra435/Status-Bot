@@ -40,7 +40,7 @@ https://cdn.discordapp.com/attachments/1102677025560473660/1176081331155902506/i
 
 Code For Your Discord Bots To Connect Them
 ```
-jsconst express = require('express');
+const express = require('express');
 const app = express()
 
 app.listen(31119, () => {
