@@ -1,9 +1,17 @@
 # Discord Server: https://discord.gg/3buHe5cY4J
 
 # Welcome to our Status Bot – a versatile tool available for anyone to use! This bot is designed to enhance your Discord.
+
+Online Channel View
 ![image](https://github.com/Cobra435/Status-Bot/assets/71304873/68ea6c36-329f-4eee-988a-eb248e378c00)
-![image](https://github.com/Cobra435/Status-Bot/assets/71304873/b5d7e79f-8379-4627-8cb6-6ac3dfbe6827)
+
+Offline Channel View
 ![image](https://github.com/Cobra435/Status-Bot/assets/71304873/e60bcd3b-121f-48f2-a197-7a0958e76bac)
+
+DM View
+![image](https://github.com/Cobra435/Status-Bot/assets/71304873/b5d7e79f-8379-4627-8cb6-6ac3dfbe6827)
+
+
 
 # 🤖 Direct Messages to Roles
 # Easily broadcast crucial updates directly to specific roles, ensuring targeted communication and keeping everyone in the loop.
