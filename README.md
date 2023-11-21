@@ -11,7 +11,9 @@ Online Channel View
 DM View
 ![image](https://github.com/Cobra435/Status-Bot/assets/71304873/b5d7e79f-8379-4627-8cb6-6ac3dfbe6827)
 
+#Channel Logs - Disable And Enabling DMS 
 
+![image](https://github.com/Cobra435/Status-Bot/assets/71304873/f52d52eb-6a82-4489-ac37-6eda9685d711)
 
 # 🤖 Direct Messages to Roles
 # Easily broadcast crucial updates directly to specific roles, ensuring targeted communication and keeping everyone in the loop.
