@@ -2,6 +2,7 @@ module.exports = {
   token: 'put-your-token', //Put Your Token Here
   sendDirectMessages: true, // Only Turn To False If You Never Want The DMS
   channelID: 'id-here', // Put Your Status Channel ID Here
+  logChannelId: 'id-here', // Put Your Logging Channel ID Here For The Enabling And Disabling DMS
   messageID: 'id-here', // Put the message id here after the first embed is sent out
   roleID: 'id-here', // Put the role id for direct messages
   guildID: 'id-here', // Put your Guild ID here

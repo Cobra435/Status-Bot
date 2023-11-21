@@ -144,28 +144,76 @@ client.on('interactionCreate', async (interaction) => {
     if (senderHasPermission) {
       if (config.sendDirectMessages) {
         config.sendDirectMessages = false;
-        await interaction.reply('Direct messages are now disabled.');
+        await interaction.reply({ content: 'Direct messages are now disabled.', ephemeral: true });
+  
+        // Logging the command usage in an embed
+        const guild = client.channels.cache.get(channelID).guild;
+        const serverName = guild.name;
+        const logEmbed = new EmbedBuilder()
+           .setTitle(serverName)
+      .setThumbnail(client.channels.cache.get(channelID).guild.iconURL())
+          .setDescription(`${interaction.user.tag} disabled direct messages.`)
+          .setColor('#ff0000')
+          .setTimestamp()
+      .setFooter({ text: serverName, iconURL: guild.iconURL() });
+  
+        // Fetching the channel ID from config.js
+        const logChannelId = config.logChannelId;
+  
+        // Sending the log to the specified channel ID
+        const logChannel = interaction.guild.channels.cache.get(logChannelId);
+        if (logChannel.type === 0) {
+          logChannel.send({ embeds: [logEmbed] });
+        } else {
+          // If the log channel is not found or not a text channel, handle it accordingly
+          console.log('Log channel not found or invalid!');
+        }
+  
       } else {
-        await interaction.reply('Direct messages are already disabled.');
+        await interaction.reply({ content: 'Direct messages are already disabled.', ephemeral: true });
       }
     } else {
-      await interaction.reply('You do not have permission to use this command.');
+      await interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
     }
   }
-
+  
   if (commandName === 'enabledm') {
     if (senderHasPermission) {
       if (!config.sendDirectMessages) {
         config.sendDirectMessages = true;
-        await interaction.reply('Direct messages are now enabled.');
+        await interaction.reply({ content: 'Direct messages are now enabled.', ephemeral: true });
+  
+        // Logging the command usage in an embed
+          const guild = client.channels.cache.get(channelID).guild;
+          const serverName = guild.name;
+          const logEmbed = new EmbedBuilder()
+          .setTitle(serverName)
+      .setThumbnail(client.channels.cache.get(channelID).guild.iconURL())
+          .setDescription(`${interaction.user.tag} enabled direct messages.`)
+          .setColor('#00ff00')
+          .setTimestamp()
+      .setFooter({ text: serverName, iconURL: guild.iconURL() });
+  
+        // Fetching the channel ID from config.js
+        const logChannelId = config.logChannelId;
+  
+        // Sending the log to the specified channel ID
+        const logChannel = interaction.guild.channels.cache.get(logChannelId);
+        if (logChannel.type === 0) {
+          logChannel.send({ embeds: [logEmbed] });
+        } else {
+          // If the log channel is not found or not a text channel, handle it accordingly
+          console.log('Log channel not found or invalid!');
+        }
+  
       } else {
-        await interaction.reply('Direct messages are already enabled.');
+        await interaction.reply({ content: 'Direct messages are already enabled.', ephemeral: true });
       }
     } else {
-      await interaction.reply('You do not have permission to use this command.');
+      await interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
     }
   }
-});
+  });
 client.on('ready', () => {
   client.application.commands.create({
     name: 'disabledm',
