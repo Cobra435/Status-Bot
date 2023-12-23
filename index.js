@@ -11,7 +11,7 @@ client.commands = new Map();
 client.buttons = new Map();
 client.selectMenus = new Map();
 client.modals = new Map();
-client.login(config.token);
+
 client.on('ready', async () => {
   console.clear()
   app.listen(config.port)
@@ -237,3 +237,5 @@ function logger(data = { string, type }) {
 function getDMStatus() {
   return config.sendDirectMessages ? '`Enabled`' : '`Disabled`';
 }
+
+client.login(config.token);
