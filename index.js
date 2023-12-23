@@ -208,11 +208,9 @@ function sendDMStatusChangeMessage(interaction, content, color) {
       }
     });
 }
-
 function sendPermissionErrorMessage(interaction) {
   interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
 }
-
 function createCommands() {
   const commands = config.commands;
 
