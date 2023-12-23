@@ -1,18 +1,36 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-const config = require('./config.js');
 const request = require('request');
+const config = require('./config.js');
+const figlet = require('figlet')
+const chalk = require('chalk')
 
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMembers,
-    // ... (add other required intents)
     GatewayIntentBits.MessageContent,
   ],
 });
 
+client.commands = new Map();
+client.buttons = new Map();
+client.selectMenus = new Map();
+client.modals = new Map();
+
 client.on('ready', async () => {
-  console.log('Bot is ready!');
+  console.clear()
+  let font = await maths(["Graffiti", "Standard", "Varsity", "Stop", "Speed", "Slant", "Pagga", "Larry 3D"]);
+  figlet.text("Status Bot", { font: font, width: 700 }, async function (err, text,) {
+    logger({ string: text, type: "figlet" })
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━ Bot ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    logger({ string: `Created by Cobra & ProjectPhil - Strike-Modifications `, type: "info" })
+    logger({ string: `Guilds: '${client.guilds.cache.size}' Users: '${client.users.cache.size}' Channels: '${client.channels.cache.size}'`, type: "INFO" });
+    logger({ string: `A Total Of '${client.commands?.size}' Command(s) '${client.buttons?.size}' Button(s) '${client.selectMenus?.size}' Select Menu(s) '${client.modals?.size}' Modal(s)`, type: "info" });
+    logger({ string: `Bot ID ${client.user.id}`, type: "info" })
+    logger({ string: `Logged In As ${client.user.tag}`, type: "success" })
+    logger({ string: `Running On Port ${config.port}`, type: "success" })
+    logger({ string: `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=applications.commands%20bot`, type: "invite" })
+  })
 
   const websites = config.websites;
 
@@ -22,12 +40,11 @@ client.on('ready', async () => {
 
   setInterval(async () => {
     const guild = client.channels.cache.get(config.channelID).guild;
-    const serverName = guild.name;
     const embed = new EmbedBuilder()
-      .setTitle(serverName)
+      .setTitle(guild.name)
       .setDescription('**Server Status - Information**')
       .setColor(0xFF0000)
-      .setFooter({ text: serverName, iconURL: guild.iconURL() });
+      .setFooter({ text: guild.name, iconURL: guild.iconURL() });
 
     await Promise.all(websites.map(async (website) => {
       try {
@@ -81,8 +98,13 @@ client.on('ready', async () => {
         .then((message) => config.messageID = message.id)
         .catch(console.error);
     }
+
+    // Creating commands after updating the status
+    createCommands(config.commands);
   }, 10000);
 });
+
+client.login(config.token);
 
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
@@ -99,20 +121,13 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 
-client.on('ready', () => {
-  createCommands();
-});
-
-client.login(config.token);
-
-async function makeRequest(url) {
+function makeRequest(url) {
   return new Promise((resolve) => {
     request(url, (error, response, body) => {
       resolve({ error, response });
     });
   });
 }
-
 function getFormattedDowntime(downtime) {
   const days = Math.floor(downtime / 86400);
   const hours = Math.floor((downtime % 86400) / 3600);
@@ -121,37 +136,31 @@ function getFormattedDowntime(downtime) {
 
   return `${days}D ${hours}H ${minutes}M ${seconds}S`;
 }
-
 function sendDMOnServerDown(guild, website) {
-  const role = guild.roles.cache.get(config.roleID);
+  guild.members.fetch().then((members) => {
+    members.each((member) => {
+      if (!member.user.bot && member.id !== client.user.id && member.roles.cache.has(config.roleID)) {
+        const now = new Date();
+        const embed = new EmbedBuilder()
+          .setTitle(guild.name)
+          .setThumbnail(client.channels.cache.get(config.channelID).guild.iconURL())
+          .setDescription(`**🔴 Server Down:** ${website.name}`)
+          .setColor(0xFF0000)
+          .setFooter({ text: guild.name, iconURL: guild.iconURL() });
 
-  guild.members.fetch()
-    .then((members) => {
-      members.each((member) => {
-        if (!member.user.bot && member.id !== client.user.id && member.roles.cache.has(config.roleID)) {
-          const now = new Date();
-          const serverName = guild.name;
-          const embed = new EmbedBuilder()
-            .setTitle(serverName)
-            .setThumbnail(client.channels.cache.get(config.channelID).guild.iconURL())
-            .setDescription(`**🔴 Server Down:** ${website.name}`)
-            .setColor(0xFF0000)
-            .setFooter({ text: serverName, iconURL: guild.iconURL() });
-
-          member.send({ embeds: [embed] })
-            .catch((err) => {
-              handleDMError(err, member.id);
-            });
-        }
-      });
-      website.dm = true;
-    })
+        member.send({ embeds: [embed] })
+          .catch((err) => {
+            handleDMError(err, member.id);
+          });
+      }
+    });
+    website.dm = true;
+  })
     .catch((error) => {
       console.error('Failed to fetch members:', error);
       website.dm = false;
     });
 }
-
 function handleDMError(err, memberId) {
   if (err.message === 'Cannot send messages to this user') {
     console.error('Cannot send messages to the user with ID; either they have the bot blocked or direct messages aren\'t enabled:', memberId);
@@ -187,14 +196,13 @@ function sendDMStatusChangeMessage(interaction, content, color) {
   interaction.reply({ content, ephemeral: true })
     .then(() => {
       const guild = client.channels.cache.get(config.channelID).guild;
-      const serverName = guild.name;
       const logEmbed = new EmbedBuilder()
-        .setTitle(serverName)
+        .setTitle(guild.name)
         .setThumbnail(client.channels.cache.get(config.channelID).guild.iconURL())
         .setDescription(`${interaction.user.tag} ${content}`)
         .setColor(color)
         .setTimestamp()
-        .setFooter({ text: serverName, iconURL: guild.iconURL() });
+        .setFooter({ text: guild.name, iconURL: guild.iconURL() });
 
       const logChannel = interaction.guild.channels.cache.get(config.logChannelId);
 
@@ -208,16 +216,39 @@ function sendDMStatusChangeMessage(interaction, content, color) {
 function sendPermissionErrorMessage(interaction) {
   interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
 }
-function createCommands() {
-  const commands = config.commands;
-
-  client.application.commands.create({
-    name: commands.disableDM.name,
-    description: commands.disableDM.description,
+function createCommands(commands) {
+  Object.values(commands).forEach((command) => {
+    client.application.commands.create({
+      name: command.name,
+      description: command.description,
+    });
   });
+}
+function maths(array) {
+  let bruh = array[Math.floor(array.length * Math.random())];
+  return bruh;
+}
+function logger(data = { string, type }) {
+  switch (data.type.toLowerCase()) {
+    case "info": console.log(chalk.white("[ ") + chalk.bold.white("INFO") + chalk.white(" ]: ") + data.string)
+      break;
+    case "success": console.log(chalk.white("[ ") + chalk.bold.green("SUCCESS") + chalk.white(" ]: ") + data.string)
+      break;
+    case "error": console.log(chalk.white("[ ") + chalk.bold.red("ERROR") + chalk.white(" ]: ") + data.string)
+      break;
+    case "modules": console.log(chalk.white("[ ") + chalk.bold.magenta("MODULES") + chalk.white(" ]: ") + data.string)
+      break;
+    case "figlet": console.log(chalk.bold.blue(data.string))
+      break;
+    case "invite": console.log(chalk.white("[ ") + chalk.bold.red("INVITE:") + chalk.white(" ]: ") + data.string)
+      break;
+    case "versionchecker": console.log(chalk.white("[ ") + chalk.bold.red("Version Checker:") + chalk.white(" ]: ") + data.string)
+      break;
+    case "license": console.log(chalk.white("[ ") + chalk.bold.red("LICSYS:") + chalk.white(" ]: ") + data.string)
+      break;
+    case "commands": console.log(chalk.white("[ ") + chalk.bold.red("COMMANDS ERROR:") + chalk.white(" ]: ") + data.string)
+      break;
+    case "mysql": console.log(chalk.white("[ ") + chalk.bold.red("MYSQL:") + chalk.white(" ]: ") + data.string)
 
-  client.application.commands.create({
-    name: commands.enableDM.name,
-    description: commands.enableDM.description,
-  });
+  }
 }
