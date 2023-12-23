@@ -40,13 +40,4 @@ Users must refrain from claiming to be the owner or creator of the bot derived f
 Users will receive no support or assistance once the bot code has been modified.
 https://cdn.discordapp.com/attachments/1102677025560473660/1176081331155902506/image.png?ex=656d9217&is=655b1d17&hm=213a6e237c7d31623951f3ed78d958981485d824ca7d4390a80e520156cfdc7b&
 
-Code For Your Discord Bots To Connect Them
-```
-const express = require('express');
-const app = express()
-
-app.listen(31119, () => {
-console.log(`Server listening on ${31119}`);
-});
-```
 Developers: @cobrastrikemodifications , @timmmy1 , @projectphil 
