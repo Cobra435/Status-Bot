@@ -1,9 +1,4 @@
-const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-const request = require('request');
-const config = require('./config.js');
-const figlet = require('figlet')
-const chalk = require('chalk')
-
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js'), request = require('request'), config = require('./config.js'), figlet = require('figlet'), chalk = require('chalk'), express = require('express'), app = express();
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -16,9 +11,10 @@ client.commands = new Map();
 client.buttons = new Map();
 client.selectMenus = new Map();
 client.modals = new Map();
-
+client.login(config.token);
 client.on('ready', async () => {
   console.clear()
+  app.listen(config.port)
   let font = await maths(["Graffiti", "Standard", "Varsity", "Stop", "Speed", "Slant", "Pagga", "Larry 3D"]);
   figlet.text("Status Bot", { font: font, width: 700 }, async function (err, text,) {
     logger({ string: text, type: "figlet" })
@@ -32,12 +28,6 @@ client.on('ready', async () => {
     logger({ string: `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=applications.commands%20bot`, type: "invite" })
   })
 
-  const websites = config.websites;
-
-  function getDMStatus() {
-    return config.sendDirectMessages ? '`Enabled`' : '`Disabled`';
-  }
-
   setInterval(async () => {
     const guild = client.channels.cache.get(config.channelID).guild;
     const embed = new EmbedBuilder()
@@ -46,7 +36,7 @@ client.on('ready', async () => {
       .setColor(0xFF0000)
       .setFooter({ text: guild.name, iconURL: guild.iconURL() });
 
-    await Promise.all(websites.map(async (website) => {
+    await Promise.all(config.websites.map(async (website) => {
       try {
         const { error, response } = await makeRequest(website.url);
 
@@ -65,7 +55,7 @@ client.on('ready', async () => {
       }
     }));
 
-    websites.forEach((website) => {
+    config.websites.forEach((website) => {
       if (website.status === 'Offline - ❌') {
         const formattedTime = getFormattedDowntime(website.downtime);
 
@@ -86,11 +76,8 @@ client.on('ready', async () => {
     });
 
     embed.setThumbnail(client.channels.cache.get(config.channelID).guild.iconURL());
-
-    const messageID = config.messageID;
-
-    if (messageID) {
-      client.channels.cache.get(config.channelID).messages.fetch(messageID)
+    if (config.messageID) {
+      client.channels.cache.get(config.channelID).messages.fetch(config.messageID)
         .then((message) => message.edit({ embeds: [embed] }))
         .catch(console.error);
     } else {
@@ -98,14 +85,9 @@ client.on('ready', async () => {
         .then((message) => config.messageID = message.id)
         .catch(console.error);
     }
-
-    // Creating commands after updating the status
     createCommands(config.commands);
   }, 10000);
 });
-
-client.login(config.token);
-
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
 
@@ -251,4 +233,7 @@ function logger(data = { string, type }) {
     case "mysql": console.log(chalk.white("[ ") + chalk.bold.red("MYSQL:") + chalk.white(" ]: ") + data.string)
 
   }
+}
+function getDMStatus() {
+  return config.sendDirectMessages ? '`Enabled`' : '`Disabled`';
 }

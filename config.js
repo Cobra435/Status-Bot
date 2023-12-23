@@ -11,14 +11,16 @@ module.exports = {
   websites: [
     {
       name: 'Website 1',
-      url: 'http://petro.projectphil.co.uk:4005',
+      url: 'http://example.com',  // Replace with your website URL
       status: 'Online - ✅',
       dm: false,
       downtime: 0,
     },
     // Add more websites as needed
   ],  // Configuration for Monitoring Websites
-  commands: {},  // Configuration for Bot Commands
-  figletFonts: [],  // Custom Font Options for Figlet (if applicable)
-
+  commands: {
+    disableDM: { name: 'disabledm', description: 'Disable direct messages'},
+    enableDM: { name: 'enabledm', description: 'Enable direct messages'},
+  },  // Configuration for Bot Commands
+  figletFonts: ['Graffiti', 'Standard', 'Varsity', 'Stop', 'Speed', 'Slant', 'Pagga', 'Larry 3D'], // Custom Font Options for Figlet (if applicable)
 };
