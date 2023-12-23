@@ -1,17 +1,25 @@
 module.exports = {
-  token: 'put-your-token', //Put Your Token Here
-  sendDirectMessages: true, // Only Turn To False If You Never Want The DMS
-  channelID: 'id-here', // Put Your Status Channel ID Here
-  logChannelId: 'id-here', // Put Your Logging Channel ID Here For The Enabling And Disabling DMS
-  messageID: 'id-here', // Put the message id here after the first embed is sent out
-  roleID: 'id-here', // Put the role id for direct messages
-  guildID: 'id-here', // Put your Guild ID here
-  allowedRoleID: 'id-here', // Add your role id here for diasble and enableing messages
+  token: 'MTE3OTQwMzM0Mzc3MzMwNjkzMA.G528jG.JSljlnfSSfwgLG92aOmgKoFKhLIfozt29d52tU',
+  channelID: '1187510784822104174',
+  messageID: '1187915690972299314',
+  roleID: '1174187383042879549',
+  guildID: '1174185500517609562',
+  allowedRoleID: '1174187383042879549',
+  sendDirectMessages: true,
+  logChannelId: '1185591705349652562', // Add this line if you have a log channel
+
   websites: [
-    { name: 'Name Here', url: 'website-link-here', status: 'Loading...', downtime: 0, dm: false },
-    { name: 'Name Here', url: 'website-link-here', status: 'Loading...', downtime: 0, dm: false },
-    { name: 'Name Here', url: 'website-link-here', status: 'Loading...', downtime: 0, dm: false },
-    { name: 'Name Here', url: 'website-link-here', status: 'Loading...', downtime: 0, dm: false },
-    // Add or remove more websites as needed
+    { name: 'Website 1', url: 'http://petro.projectphil.co.uk:4005', status: 'Online - ✅', dm: false, downtime: 0 },
   ],
+
+  commands: {
+    disableDM: {
+      name: 'disabledm',
+      description: 'Disable direct messages',
+    },
+    enableDM: {
+      name: 'enabledm',
+      description: 'Enable direct messages',
+    },
+  },
 };
