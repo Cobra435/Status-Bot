@@ -1,22 +1,21 @@
 module.exports = {
-  token: '',  // Bot Token
-  channelID: '',  // Discord Channel ID for Status Messages
-  messageID: '',  // Discord Message ID for Updating Status Messages
+  token: 'MTE3OTQwMzM0Mzc3MzMwNjkzMA.GOe53F.ROyXp0QZiuvWI2wFa5HNQqeV5ZUOemNbtv8jXQ',  // Bot Token
+  channelID: '1187510784822104174',  // Discord Channel ID for Status Messages
+  messageID: '1187919734528823356',  // Discord Message ID for Updating Status Messages
   port: 3000,  // Port for the server
-  roleID: '',  // Role ID to Mention when Server is Down
-  guildID: '',  // Discord Guild ID
-  allowedRoleID: '',  // Allowed Role ID for Using Commands
+  roleID: '1174187383042879549',  // Role ID to Mention when Server is Down
+  guildID: '1174185500517609562',  // Discord Guild ID
+  allowedRoleID: '1174187383042879549',  // Allowed Role ID for Using Commands
   sendDirectMessages: true,  // Option to Send Direct Messages
-  logChannelId: '',  // Discord Log Channel ID
+  logChannelId: '1185591705349652562',  // Discord Log Channel ID
   websites: [
     {
       name: 'Website 1',
-      url: 'http://example.com',  // Replace with your website URL
+      url: 'http://petro.projectphil.co.uk:4005',
       status: 'Online - ✅',
       dm: false,
       downtime: 0,
     },
-    // Add more websites as needed
   ],  // Configuration for Monitoring Websites
   commands: {
     disableDM: { name: 'disabledm', description: 'Disable direct messages'},
