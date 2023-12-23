@@ -159,7 +159,6 @@ function handleDMError(err, memberId) {
     console.error('Failed to send a message to the user with ID:', memberId, err);
   }
 }
-
 function handleDisableDMCommand(interaction, senderHasPermission) {
   if (senderHasPermission) {
     if (config.sendDirectMessages) {
@@ -172,7 +171,6 @@ function handleDisableDMCommand(interaction, senderHasPermission) {
     sendPermissionErrorMessage(interaction);
   }
 }
-
 function handleEnableDMCommand(interaction, senderHasPermission) {
   if (senderHasPermission) {
     if (!config.sendDirectMessages) {
@@ -185,7 +183,6 @@ function handleEnableDMCommand(interaction, senderHasPermission) {
     sendPermissionErrorMessage(interaction);
   }
 }
-
 function sendDMStatusChangeMessage(interaction, content, color) {
   interaction.reply({ content, ephemeral: true })
     .then(() => {
